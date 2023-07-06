@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <el-button type="danger">123</el-button>
+<!--  一级路由出口组件-->
+  <RouterView/>
 </template>
 
 <style scoped>
