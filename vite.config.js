@@ -6,6 +6,13 @@ import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@use "@/styles/element/index.scss" as *;`,
+            },
+        },
+    },
     plugins: [
         vue(),
 
@@ -14,8 +21,17 @@ export default defineConfig({
             resolvers: [ElementPlusResolver()],
         }),
         Components({
-            resolvers: [ElementPlusResolver()],
+            // resolvers: [ElementPlusResolver()],
+            resolvers: [
+                //自定义主题色
+                ElementPlusResolver({importStyle: 'sass'})
+            ]
         }),
+        // 或者使用 unplugin-element-plus
+        /*ElementPlus({
+            useSource: true,
+        }),*/
+
     ],
     base: './',
     resolve: {
@@ -24,5 +40,6 @@ export default defineConfig({
             "@": resolve(__dirname, "./src")
         }
     },
+
 
 })
