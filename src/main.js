@@ -1,5 +1,12 @@
-import { createApp } from 'vue'
-import './style.css'
+import {createApp} from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import {loadPlugins} from "@/plugins/index.js";
+
+import 'element-plus/dist/index.css'
+import './style.css'
+const app = createApp(App)
+/** 加载插件 */
+loadPlugins(app)
+
+app.mount('#app');
